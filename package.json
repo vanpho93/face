@@ -1,0 +1,14 @@
+{
+  "name": "face",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vanpho93/face.git",
+  "author": "<vanpho02@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "eslint-config-rallycoding": "^3.2.0",
+    "lodash": "^4.17.4",
+    "request-sync": "^1.0.0",
+    "sync-request": "^4.0.1"
+  }
+}

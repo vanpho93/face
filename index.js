@@ -12,14 +12,15 @@ app.listen(process.env.PORT || 3000, () => console.log('server started'));
 
 app.get('/', (req, res) => res.send('Still alive'));
 
-app.post('/findByUrl', parser, (req, res) => {
+app.post('/findByUrl', parser, async (req, res) => {
     const { imageUrl } = req.body;
+    console.log('URL:::', imageUrl);
     try {
-        console.log('URL:::', imageUrl);
-        const faceId = getFaceByImageUrl(imageUrl);
-        const name = getNameByFaceId(faceId);
+        const faceId = await getFaceByImageUrl(imageUrl);
+        const name = await getNameByFaceId(faceId);
         res.send(name);
     } catch (e) {
+        console.log(e + '');
         res.send(`${e} `);
     }
 });

@@ -30,14 +30,7 @@ app.post('/findByImage', formidble, (req, res) => {
         path = `${path}.jpg`;
         let output = path.replace('public/', '');
         output = `https://khoapham-face.herokuapp.com/${output}`;
-        console.log(output);
-        try {
-            const faceId = getFaceByImageUrl(output);
-            const name = getNameByFaceId(faceId);
-            res.send(name);
-        } catch (e) {
-            res.send(`${e} `);
-        }
+        res.send(output);
     });
 });
 

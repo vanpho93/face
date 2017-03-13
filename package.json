@@ -2,7 +2,7 @@
   "name": "face",
   "version": "1.0.0",
   "main": "index.js",
-  "script": {
+  "scripts": {
     "start": "node index.js"
   },
   "repository": "https://github.com/vanpho93/face.git",

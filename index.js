@@ -33,3 +33,9 @@ app.post('/findByImage', formidble, (req, res) => {
         res.send(output);
     });
 });
+
+app.get('/list', (req, res) => {
+  fs.readdir('./public', (err, files) => {
+    res.send(files.join('\n'));
+  });
+});

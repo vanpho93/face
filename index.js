@@ -15,6 +15,7 @@ app.get('/', (req, res) => res.send('Still alive'));
 app.post('/findByUrl', parser, (req, res) => {
     const { imageUrl } = req.body;
     try {
+        console.log(imageUrl);
         const faceId = getFaceByImageUrl(imageUrl);
         const name = getNameByFaceId(faceId);
         res.send(name);

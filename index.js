@@ -29,8 +29,14 @@ app.post('/findByImage', formidble, (req, res) => {
         if (err) return res.send(`${err} `);
         path = `${path}.jpg`;
         const output = path.replace('public/', '');
-        console.log(output);
-        res.send(output);
+        
+        try {
+            const faceId = getFaceByImageUrl(output);
+            const name = getNameByFaceId(faceId);
+            res.send(name);
+        } catch (e) {
+            res.send(`${e} `);
+        }
     });
 });
 

@@ -28,7 +28,7 @@ app.post('/findByImage', formidble, (req, res) => {
     fs.rename(path, `${path}.jpg`, err => {
         if (err) return res.send(`${err} `);
         path = `${path}.jpg`;
-        let output = path.replace('public/', '');
+        let output = path.replace('public/', '').replace('-', '');
         output = `https://khoapham-face.herokuapp.com/${output}`;
         res.send(output);
     });

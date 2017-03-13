@@ -25,7 +25,7 @@ app.post('/findByUrl', parser, (req, res) => {
 
 app.post('/findByImage', formidble, (req, res) => {
     let { path } = req.files.avatar;
-    fs.rename(path, `${path}.png`, err => {
+    fs.rename(path, `${path}.png`.replace('_', ''), err => {
         if (err) return res.send(`${err} `);
         path = `${path}.png`;
         let output = path.replace('public/', '').replace('_', '');

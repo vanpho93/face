@@ -1,14 +1,19 @@
-const request = require('sync-request');
+const express = require('express');
+const parser = require('body-parser').urlencoded({ extended: false });
+// const formidble = require('express-formidable');
+const getFaceByImageUrl = require('./api/uploadFace');
+const getNameByFaceId = require('./api/identify');
 
-const KEY = '6849f848e58547a3997fd750e0ac4a3b';
-const url = 'https://westus.api.cognitive.microsoft.com/face/v1.0/persongroups/employee/persons';
-const opts = {
-    headers: { 'Ocp-Apim-Subscription-Key': KEY }
-};
+const app = express();
+app.listen(3000, () => console.log('server started'));
 
-try {
-    const response = request('GET', url, opts);
-    console.log(response.getBody('utf8'));
-} catch (e) {
-    console.log(`${e} `);
-}
+app.post('/find', parser, (req, res) => {
+    const { imageUrl } = req.body;
+    try {
+        const faceId = getFaceByImageUrl(imageUrl);
+        const name = getNameByFaceId(faceId);
+        res.send(name);
+    } catch (e) {
+        res.send(`${e} `);
+    }
+});

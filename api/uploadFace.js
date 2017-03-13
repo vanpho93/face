@@ -12,7 +12,6 @@ function uploadFace(imageUrl) {
      });
     const body = response.getBody('utf8');
     const arr = JSON.parse(body);
-    console.log(body);
     return arr[0].faceId;
 }
 

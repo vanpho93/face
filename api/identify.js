@@ -1,4 +1,5 @@
 const request = require('sync-request');
+const arrayEmp = require('../data');
 
 const groupId = 'employee';
 const KEY = '6849f848e58547a3997fd750e0ac4a3b';
@@ -21,7 +22,8 @@ function identify(faceId) {
         }
      });
     const data = response.getBody('utf8').replace('\n', '');
-    return getText(data, '"personId":"', '","confidence"');
+    const id = getText(data, '"personId":"', '","confidence"');
+    return arrayEmp.find(e => e.personId === id).name;
 }
 
 module.exports = identify;

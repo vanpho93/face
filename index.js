@@ -1,5 +1,5 @@
 const express = require('express');
-const parser = require('body-parser').urlencoded({ extended: false });
+const parser = require('body-parser').json();
 const formidble = require('express-formidable')({ uploadDir: './public' });
 const fs = require('fs');
 
@@ -12,7 +12,7 @@ app.listen(process.env.PORT || 3000, () => console.log('server started'));
 
 app.get('/', (req, res) => res.send('Still alive'));
 
-app.post('/findById', parser, (req, res) => {
+app.post('/findByUrl', parser, (req, res) => {
     const { imageUrl } = req.body;
     try {
         const faceId = getFaceByImageUrl(imageUrl);

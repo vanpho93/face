@@ -25,6 +25,3 @@ function identify(faceId) {
 }
 
 module.exports = identify;
-
-// console.log(identify('f2905af3-5582-4b0a-a828-fd0cebae5fd0'));
-

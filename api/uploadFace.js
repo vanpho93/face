@@ -10,7 +10,9 @@ function uploadFace(imageUrl) {
             url: imageUrl
         }
      });
-    const arr = JSON.parse(response.getBody('utf8'));
+    const body = response.getBody('utf8');
+    const arr = JSON.parse(body);
+    console.log(body);
     return arr[0].faceId;
 }
 
